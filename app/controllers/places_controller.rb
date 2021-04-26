@@ -1,13 +1,10 @@
 class PlacesController < ApplicationController
-  before_action :set_place, only: %i[ show edit update destroy ]
+  before_action :set_place, only: %i[ show ]
 
   # GET /places or /places.json
   def index
-    @q = Place.ransack(params[:q])
-    @places = @q.result(distinct: true)
+    @places = Place.where(['name LIKE ?', "%#{params[:search]}%"])
   end
-
-
 
   # GET /places/1 or /places/1.json
   def show
@@ -16,10 +13,6 @@ class PlacesController < ApplicationController
   # GET /places/new
   def new
     @place = Place.new
-  end
-
-  # GET /places/1/edit
-  def edit
   end
 
   # POST /places or /places.json
@@ -37,27 +30,7 @@ class PlacesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /places/1 or /places/1.json
-  def update
-    respond_to do |format|
-      if @place.update(place_params)
-        format.html { redirect_to @place, notice: "Place was successfully updated." }
-        format.json { render :show, status: :ok, location: @place }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
-  # DELETE /places/1 or /places/1.json
-  def destroy
-    @place.destroy
-    respond_to do |format|
-      format.html { redirect_to places_url, notice: "Place was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
