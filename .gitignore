@@ -8,6 +8,8 @@
 /.bundle
 
 # Ignore the default SQLite database.
+#/db/*.sqlite3
+#/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -16,8 +18,8 @@
 !/tmp/.keep
 
 # Ignore uploaded files in development
-/storage/*
-!/storage/.keep
+#/storage/*
+#!/storage/.keep
 
 /node_modules
 /yarn-error.log
