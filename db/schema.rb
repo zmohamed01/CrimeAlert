@@ -12,14 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_04_25_172946) do
 
-  create_table "cities", force: :cascade do |t|
-    t.string "name"
-    t.decimal "latitude"
-    t.decimal "longitude"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "places", force: :cascade do |t|
     t.string "name"
     t.decimal "latitude"
