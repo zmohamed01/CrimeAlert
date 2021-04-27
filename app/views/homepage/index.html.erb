@@ -1,13 +1,15 @@
-<div class="jumbotron text-center">
-  <h1>Crime Guard</h1>
-  <hr>
-  <%= link_to 'Home', root_path, class: 'btn btn-default my-2' %>
-</div>
+
 
 <p id="notice"><%= notice %></p>
 
+<div class="jumbotron text-center">
+  <h1>View all cities</h1>
+  <hr>
+  <%= link_to 'Cities', places_path, class: 'btn btn-secondary my-3' %>
+</div>
 
-<div class="container">
+
+<!-- <div class="container">
     <div class="row height d-flex justify-content-center align-items-center">
       <form  action="/search" method="get">
           <h1>Search for a City:</h1>
@@ -16,4 +18,4 @@
             <button class="btn btn-light" type="Search">Search</button>
       </form>
     </div>
-</div>
+</div> -->
