@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+    <div class="row height d-flex justify-content-center align-items-center">
+      <form>
+        <%= form_tag places_path, :method => 'get' do %>
+        <h1>All Cities</h1>
+            <div class="form"> <i class="fa fa-search"></i> <%= text_field_tag :search, params[:search], class:"btn btn-light",placeholder:"Please enter a city" %> <span class="left-pan"></span> </div>
+            <button> <%= submit_tag "Search" ,class:"btn btn-light " %></button>
+      </form>
+      <% end %>
+    </div>
+</div>
+
+
+
+<table class="table table-hover ">
+  <thead>
+    <tr class="table-bordered">
+      <th>City</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @places.each do |place| %>
+      <tr>
+        <td><%= place.name %></td>
+        <td><%= link_to 'Show', place %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Place', new_place_path %>
