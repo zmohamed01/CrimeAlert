@@ -4,40 +4,42 @@
       <h2><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2>
 
       <ul>
-      <% location.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% location.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_area :address %>
+  <div class="form-group col-5">
+    <%= form.label :address, "What is the address of where the crime took place?",  class: "col-10 col-form-label"  %>
+    <%= form.text_area :address, rows: 1 ,class: "form-control"  %>
   </div>
-  
-  <div class="field">
-    <%= form.label :type %>
-    <%= form.text_area :typec %>
+
+  <div class="form-group col-5">
+    <%= form.label :DateAndTime, "What is the date and time this occurred?", class: "col-10 col-form-label" %>
+    <%= form.text_field :datetime,type: "datetime-local", class: "form-control"  %>
   </div>
-  
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="form-group col-8">
+    <%= form.label :type, "What is the type of crime?", class: "col-5 col-form-label"%>
+    <%= form.select :typec, options_for_select(["Burglary", "Criminal Damage", "Drugs", "Fraud & Forgery", "Robbery", "Sexual Offences","Theft", "Assault", "Harassment", "Murder", "Assault involving weapon", "GBH", "Hate Crime"]), {include_blank:true}, class: "form-control"  %>
   </div>
-  
-  <div class="form-group">
-	<%= form.label :evidence %>
-	<%= form.file_field :image %>
+
+
+  <div class="form-group col-10">
+    <%= form.label :description, "Describe the event, including as many details as you can:",  class: "col-10 col-form-label" %>
+    <%= form.text_area :description, rows: 5 ,class: "form-control" %>
+  </div>
+
+  <div class="form-group col-10">
+    <%= form.label :evidence, class: "col-5 col-form-label" %>
+    <%= form.file_field :image %>
   </div>
   <br></br>
-  
-  <div class="field">
-    <%= form.label :DateAndTime %>
-    <%= form.text_area :datetime %>
-  </div>
-  
+
+
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Send Report", class: "btn btn-success" %>
   </div>
 <% end %>
