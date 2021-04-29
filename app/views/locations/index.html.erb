@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Address</th>
+	  <th>City</th>
       <th>Type</th>
 	  <th>Description</th>
 	  <th>DateAndTime</th>
@@ -19,6 +20,7 @@
     <% @locations.each do |location| %>
       <tr>
         <td><%= location.address %></td><p></p>
+		<td><%= location.city %></td><p></p>
 		<td><%= location.typec %></td><p></p>
 		<td><%= location.description %></td><p></p>
 		<td><%= location.datetime %></td><p></p>
