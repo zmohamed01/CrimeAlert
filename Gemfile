@@ -14,6 +14,10 @@ gem 'geocoder'
 
 gem "nifty-generators", :group => :development
 
+gem 'mail_form', '~> 1.8.1'
+
+gem 'dotenv', '~> 2.7.5'
+
 gem 'bootstrap', '~> 5.0.0.beta2'
 gem 'jquery-rails'
 # Use Puma as the app server

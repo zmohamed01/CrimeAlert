@@ -87,6 +87,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
+    dotenv (2.7.6)
     erubi (1.10.0)
     execjs (2.7.0)
     ffi (1.15.0-x64-mingw32)
@@ -110,6 +111,9 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    mail_form (1.8.1)
+      actionmailer (>= 5.0)
+      activemodel (>= 5.0)
     marcel (1.0.0)
     method_source (1.0.0)
     mini_magick (4.11.0)
@@ -225,9 +229,11 @@ DEPENDENCIES
   carrierwave (~> 2.2.1)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  dotenv (~> 2.7.5)
   geocoder
   jbuilder (~> 2.5)
   jquery-rails
+  mail_form (~> 1.8.1)
   mocha
   nifty-generators
   puma (~> 3.11)
