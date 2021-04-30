@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
-  #   en.user_mailer.contact_form.subjecthow to present database rails boostrap
+  #   en.user_mailer.contact_form.subject
   #
   def contact_form(name, email, message)
     @name = name
