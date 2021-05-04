@@ -11,6 +11,26 @@ function initMap(lat, lng) {
         position: myCoords,
         map: map
     });
+    const myLatlng = { lat: lat, lng: lng };
+    let infoWindow = new google.maps.InfoWindow({
+      content: "Click the map to get the official Police street-level crime data",
+      position: myLatlng,
+    });
+    infoWindow.open(map);
+    map.addListener("click", (mapsMouseEvent) => {
+      infoWindow.close();
+      infoWindow = new google.maps.InfoWindow({
+      position: mapsMouseEvent.latLng,
+    });
+    infoWindow.setContent(
+      JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+    );
+    infoWindow.open(map);
+
+    var lat = mapsMouseEvent.latLng.lat();
+    var lng = mapsMouseEvent.latLng.lng();
+    runAPIrequest(lat, lng);
+  });
 }
 
 function initMap2(lat, lng) {
@@ -20,7 +40,7 @@ function initMap2(lat, lng) {
     zoom:6.3
     };
     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-  
+
     var markerGrandPlace = new google.maps.Marker({
       position: new google.maps.LatLng(51.5074, 0.1278),
       map: map,
@@ -31,4 +51,36 @@ function initMap2(lat, lng) {
       map.panTo(this.getPosition());
       map.setZoom(14);
     });
+}
+
+
+
+function runAPIrequest(lat, lng) {
+axios.get('https://data.police.uk/api/crimes-street/all-crime', {
+                params:{
+                   lat:lat,
+                   lng:lng
+                }
+            })
+            .then(function(response){
+                console.log(response);
+                var data = response;
+                var temp = "";
+
+                for (i = 0; i < response.data.length; i++) {
+
+                    temp += "<tr>";
+                    temp += "<td>" + response.data[i].id + "</td>";
+                    temp += "<td>" + response.data[i].category + "</td>";
+                    temp += "<td>" + response.data[i].location.street.name + "</td>";
+                    temp += "<td>" + response.data[i].month + "</td></tr>";
+
+                }
+
+                document.getElementById('data').innerHTML = temp;
+
+            })
+            .catch(function(error){
+                console.log(error);
+            });
 }
