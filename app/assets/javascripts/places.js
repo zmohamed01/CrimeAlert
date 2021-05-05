@@ -77,7 +77,18 @@ axios.get('https://data.police.uk/api/crimes-street/all-crime', {
 
                 }
 
+                var head = "";
+
+                head += "<tr>";
+                head += "<th>id</th>";
+                head += "<th>Category</th>";
+                head += "<th>Street</th>";
+                head += "<th>Month</th>";
+                head += "</tr>";
+                
                 document.getElementById('data').innerHTML = temp;
+                document.getElementById('header').innerHTML = head;
+                document.getElementById('policeAPI').innerText = "Official Police Street Crime";
 
             })
             .catch(function(error){
