@@ -1,39 +1,28 @@
-<p id="notice"><%= notice %></p>
+<h2><b>Report Submissions</b></h2><br/>
 
-<h1>Report Submission</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Address</th>
-	  <th>City</th>
-      <th>Type</th>
-	  <th>Description</th>
-	  <th>DateAndTime</th>
-	  <th>Latitude</th>
-      <th>Longitude</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @locations.each do |location| %>
-      <tr>
-        <td><%= location.address %></td><p></p>
-		<td><%= location.city %></td><p></p>
-		<td><%= location.typec %></td><p></p>
-		<td><%= location.description %></td><p></p>
-		<td><%= location.datetime %></td><p></p>
-        <td><%= location.latitude %></td><p></p>
-        <td><%= location.longitude %></td>
-        <td><%= link_to 'Show', location %></td>
-        <td><%= link_to 'Edit', edit_location_path(location) %></td>
-        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<% @locations.each do|location| %>
+  <div class="card mb-3">
+    <% if location.image.attached? %>
+      <img class="card-img-top" src="<%= url_for(location.image) %>" alt="Card image cap" style="height:200px;">      <div class="card-body">
+        <h5 class="card-title"><%= location.typec %></h5>
+        <p class="card-text"><%= location.description%></p>
+        <p class="card-text"><small class="text-muted"><%= location.datetime %></small></p>
+        <%= link_to 'View', location_path(location), class:"btn btn-info" %>
+        <%= link_to 'Edit', edit_location_path(location), class:"btn btn-primary" %>
+       <%= link_to 'Delete', location_path(location), class:"btn btn-danger", method: :delete, data:{confirm: "Are you sure?"} %>
+      </div>
+    <% else %>
+      <div class="card-body">
+        <h5 class="card-title"><%= location.typec %></h5>
+        <h6 class="card-text"><%= location.address %></h6><br/>
+        <p class="card-text"><%= location.description%></p>
+        <p class="card-text"><small class="text-muted"><%= location.datetime %></small></p>
+        <%= link_to 'View', location_path(location), class:"btn btn-info" %>
+        <%= link_to 'Edit', edit_location_path(location), class:"btn btn-primary" %>
+        <%= link_to 'Delete', location_path(location), class:"btn btn-danger", method: :delete, data:{confirm: "Are you sure?"} %>
     <% end %>
-  </tbody>
-</table>
+    </div>
+  </div>
+<% end %>
+<%= link_to 'New Form', new_location_path, class:"btn btn-secondary" %>
 
-<br>
-
-<%= link_to 'New Form', new_location_path %>

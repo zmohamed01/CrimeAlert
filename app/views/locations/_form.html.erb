@@ -13,27 +13,27 @@
 
   <div class="form-group col-5">
     <%= form.label :address, "What is the address of where the crime took place?",  class: "col-10 col-form-label"  %>
-    <%= form.text_area :address, rows: 1 ,class: "form-control"  %>
+    <%= form.text_area :address, rows: 1 ,class: "form-control", required: true  %>
   </div>
   
-    <div class="form-group col-5">
+    <div class="form-group col-3">
     <%= form.label :city, "What is the city name?",  class: "col-10 col-form-label"  %>
-    <%= form.text_area :city, class: "form-control"  %>
+    <%= form.text_area :city, rows: 1, class: "form-control", required: true  %>
   </div>
 
   <div class="form-group col-5">
     <%= form.label :DateAndTime, "What is the date and time this occurred?", class: "col-10 col-form-label" %>
-    <%= form.text_field :datetime,type: "datetime-local", class: "form-control"  %>
+    <%= form.text_field :datetime,type: "datetime-local", class: "form-control", required: true  %>
   </div>
   <div class="form-group col-8">
     <%= form.label :type, "What is the type of crime?", class: "col-5 col-form-label"%>
-    <%= form.select :typec, options_for_select(["Burglary", "Criminal Damage", "Drugs", "Fraud & Forgery", "Robbery", "Sexual Offences","Theft", "Assault", "Harassment", "Murder", "Assault involving weapon", "GBH", "Hate Crime"]), {include_blank:true}, class: "form-control"  %>
+    <%= form.select :typec, options_for_select(["Burglary", "Criminal Damage", "Drugs", "Fraud & Forgery", "Robbery", "Sexual Offences","Theft", "Assault", "Harassment", "Murder", "Assault involving weapon", "GBH", "Hate Crime"]), {include_blank:true}, class: "form-control" , required: true %>
   </div>
 
 
   <div class="form-group col-10">
     <%= form.label :description, "Describe the event, including as many details as you can:",  class: "col-10 col-form-label" %>
-    <%= form.text_area :description, rows: 5 ,class: "form-control" %>
+    <%= form.text_area :description, rows: 5 ,class: "form-control" , required: true%>
   </div>
 
   <div class="form-group col-10">

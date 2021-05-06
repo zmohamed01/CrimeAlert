@@ -1,45 +1,25 @@
-<p id="notice"><%= notice %></p>
+<h4> View Report </h4><br/>
 
-<p>
-  <strong>Address:</strong>
-  <%= @location.address %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @location.city %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @location.typec %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @location.description %>
-</p>
-
-<p>
-	<strong>Evidence:</strong><br></br>
-	<%= image_tag(@location.image) if @location.image.attached? %>
-</p>
-
-
-<p>
-  <strong>DateAndTime:</strong>
-  <%= @location.datetime %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @location.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @location.longitude %>
-</p>
-
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+  <div class="card mb-3">
+    <% if @location.image.attached? %>
+    <img class="card-img-top" src="<%= url_for(@location.image) %>" alt="Card image cap" style="height:500px;">
+      <div class="card-body">
+        <h5 class="card-title"><%= @location.typec %></h5>
+        <p class="card-text"><%= @location.description%></p>
+        <p class="card-text"><small class="text-muted"><%= @location.datetime %></small></p>
+        <%= link_to 'Edit', edit_location_path(@location), class:"btn btn-primary" %>
+        <%= link_to 'Delete', location_path(@location), class:"btn btn-danger", method: :delete, data:{confirm: "Are you sure?"} %>
+        <%= link_to 'Back to all submissions', locations_path, type: "button", class:"btn btn-secondary" %>
+      </div>
+    <% else %>
+    <div class="card-body">
+      <h5 class="card-title"><%= @location.typec %></h5>
+      <h6 class="card-text"><%= @location.address %></h6><br/>
+      <p class="card-text"><%= @location.description%></p>
+      <p class="card-text"><small class="text-muted"><%= @location.datetime %></small></p>
+      <%= link_to 'Edit', edit_location_path(@location), class:"btn btn-primary" %>
+      <%= link_to 'Delete', location_path(@location), class:"btn btn-danger", method: :delete, data:{confirm: "Are you sure?"} %>
+      <%= link_to 'Back to all submissions', locations_path, type: "button", class:"btn btn-secondary" %>
+    </div>
+  </div>
+    <% end %>
