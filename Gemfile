@@ -8,7 +8,6 @@ gem 'jquery-rails'
 gem 'rails-controller-testing'
 gem 'simple_form'
 gem 'autoprefixer-rails'
-gem 'geocoder', '~> 1.6', '>= 1.6.7'
 gem 'gon'
 
 
