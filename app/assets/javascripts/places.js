@@ -70,7 +70,6 @@ axios.get('https://data.police.uk/api/crimes-street/all-crime', {
                 for (i = 0; i < response.data.length; i++) {
 
                     temp += "<tr>";
-                    temp += "<td>" + response.data[i].id + "</td>";
                     temp += "<td>" + response.data[i].category + "</td>";
                     temp += "<td>" + response.data[i].location.street.name + "</td>";
                     temp += "<td>" + response.data[i].month + "</td></tr>";
@@ -80,7 +79,6 @@ axios.get('https://data.police.uk/api/crimes-street/all-crime', {
                 var head = "";
 
                 head += "<tr>";
-                head += "<th>id</th>";
                 head += "<th>Category</th>";
                 head += "<th>Street</th>";
                 head += "<th>Month</th>";
@@ -89,9 +87,114 @@ axios.get('https://data.police.uk/api/crimes-street/all-crime', {
                 document.getElementById('data').innerHTML = temp;
                 document.getElementById('header').innerHTML = head;
                 document.getElementById('policeAPI').innerText = "Official Police Street Crime";
+                category = document.getElementById('category')
+                category.style.display = "";
+                count = document.getElementById('count')
+                count.style.display = "";
+                countDrugs();
 
             })
             .catch(function(error){
                 console.log(error);
             });
+}
+
+
+function sortCategory() {
+
+  // Declare variables
+
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("category");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+
+  for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+      } else {
+          tr[i].style.display = "none";
+      }
+
+      }
+
+  }
+
+}
+
+function countDrugs() {
+
+        
+
+  var input, table, tr, td, i, txtValue;
+  var drugscount = 0;
+  var biketheft = 0;
+  var asb = 0;
+  var cda = 0;
+  var ot = 0;
+  var pow = 0;
+  var po = 0;
+  var shop = 0;
+  var theft = 0;
+  var vehicle = 0;
+  var violent = 0;
+  var other = 0;
+
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+
+
+  for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.indexOf('drugs') > -1) {
+            drugscount++;
+        } else if (txtValue.indexOf('bicycle-theft') > -1) {
+            biketheft++;
+        } else if (txtValue.indexOf('anti-social-behaviour') > -1) {
+            asb++;
+        } else if (txtValue.indexOf('criminal-damage-arson') > -1) {
+            cda++;
+        } else if (txtValue.indexOf('other-theft') > -1) {
+            ot++;
+        } else if (txtValue.indexOf('possession-of-weapons') > -1) {
+            pow++;
+        } else if (txtValue.indexOf('public-order') > -1) {
+            po++;
+        } else if (txtValue.indexOf('shoplifting') > -1) {
+            shop++;
+        } else if (txtValue.indexOf('theft-from-the-person') > -1) {
+            theft++;
+        } else if (txtValue.indexOf('vehicle-crime') > -1) {
+            vehicle++;
+        } else if (txtValue.indexOf('violent-crime') > -1) {
+            violent++;
+        } else if (txtValue.indexOf('other-crime') > -1) {
+            other++;
+        } 
+      }
+
+  }
+
+  document.getElementById('asb').innerHTML = 'Anti Social Behaviour: '+ asb;
+  document.getElementById('drugs').innerHTML = 'Drugs: '+ drugscount;
+  document.getElementById('bike-theft').innerHTML = 'Bike Theft: '+ biketheft;
+  document.getElementById('cda').innerHTML = 'Criminal Damage Arson: '+ cda;
+  document.getElementById('ot').innerHTML = 'Other Theft: '+ ot;
+  document.getElementById('pow').innerHTML = 'Possesion of Weapon: '+ pow;
+  document.getElementById('po').innerHTML = 'Public Order: '+ po;
+  document.getElementById('shop').innerHTML = 'Shoplifting: '+ shop;
+  document.getElementById('theft').innerHTML = 'Theft from the Person: '+ theft;
+  document.getElementById('vehicle').innerHTML = 'Vehicle Crime: '+ vehicle;
+  document.getElementById('violent').innerHTML = 'Violent Crime: '+ violent;
+  document.getElementById('other').innerHTML = 'Other: '+ other;
+
 }
