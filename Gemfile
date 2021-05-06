@@ -3,6 +3,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
+gem 'sassc-rails', '>= 2.1.0'
+gem 'jquery-rails'
+gem 'rails-controller-testing'
+gem 'simple_form'
+gem 'autoprefixer-rails'
+gem 'geocoder', '~> 1.6', '>= 1.6.7'
+gem 'gon'
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
 # Use sqlite3 as the database for Active Record
@@ -70,3 +79,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'mocha', group: :test
+gem "ransack", "~> 2.4"

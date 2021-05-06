@@ -1,0 +1,100 @@
+<% provide :head_tags do %>
+  <meta name='turbolinks-visit-control' content='reload'>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      initMap(<%=@place.latitude%>, <%=@place.longitude%>)
+    });
+  </script>
+<% end %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h1 style="text-align:center"><%= @place.name %></h1>
+</p>
+
+
+
+<p>
+    <div id="map"></div>
+</p>
+
+<div class="p-2">
+  <%= link_to 'Back', places_path, class:'btn btn-dark'%>
+</div>
+
+<h5 class="text-center" id="policeAPI"></h5>
+
+<div class="p-5" id="count" style="display:none;">
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="stat">
+        <p class="card-text" id="asb"></p>
+      </div>
+      <div class="stat">
+        <p class="card-text" id="bike-theft"></p>
+      </div>
+      <div class="stat">
+        <p class="card-text" id="cda"></p>
+      </div>
+      <div class="stat">
+        <p class="card-text" id="drugs"></p>
+      </div>
+      <div class="stat">
+        <p class="card-text" id="ot"></p>
+      </div>
+      <div class="stat">
+      <p class="card-text" id="violent"></p>
+      </div>
+      <div class="stat">
+        <p class="card-text" id="pow"></p>
+      </div>
+      <div class="stat">
+        <p class="card-text" id="shop"></p>
+      </div>
+      <div class="stat">
+        <p class="card-text" id="theft"></p>
+      </div>
+      <div class="stat">
+        <p class="card-text" id="other"></p>
+      </div>
+      <div class="stat">
+        <p class="card-text" id="po"></p>
+      </div>
+      <div class="stat">
+      <p class="card-text" id="vehicle"></p>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  
+  <select id="category" onChange="sortCategory(this.value)" style="display:none; float: right;">
+    <option value="">Select Category...</value>
+    <option value="anti-social-behaviour">Anti Social Behaviour</option>
+    <option value="bicycle-theft">Bicycle Theft</option>
+    <option value="criminal-damage-arson">Criminal Damage Arson</option>
+    <option value="drugs">Drugs</option>
+    <option value="other-theft">Other Theft</option>
+    <option value="possession-of-weapons">Possession of Weapons</option>
+    <option value="public-order">Public Order</option>
+    <option value="shoplifting">Shoplifting</option>
+    <option value="theft-from-the-person">Theft from the Person</option>
+    <option value="vehicle-crime">Vehicle Crime</option>
+    <option value="violent-crime">Violent Crime</option>
+    <option value="other-crime">Other</option>
+  </select>
+
+  <br>
+  <br>
+  
+
+  <table class="table table-bordered table-hover" id="myTable">
+    
+    <thead class="thead-dark" id="header">
+      
+    </thead>
+    <tbody id="data">
+
+    </tbody>
+  </table>
+</div>

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   resources :locations
-  root 'locations#new'
+  get 'homepage/index'
+  resources :places
+  root 'homepage#index'
   resources :reports
   resources :contacts, only: [:new, :create]
+  get 'search', to: "places#search"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
