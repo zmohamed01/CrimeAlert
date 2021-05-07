@@ -1,0 +1,257 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container class="center"">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-5">
+            <h1> All Cities</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <form action="" class="search-form">
+                <div class="form-group has-feedback">
+            		<label for="search" class="sr-only">Search for a city...</label>
+            		<input type="text" class="form-control" name="search" id="search" placeholder="search">
+              		<span class="glyphicon glyphicon-search form-control-feedback"></span>
+            	</div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<body>
+  <div id="map"></div>
+
+  <script type="text/javascript">
+    var locations = [
+    ['London',51.5072,-0.1275],
+    ['Birmingham',52.48,-1.9025],
+    ['Manchester',53.4794,-2.2453],
+    ['Leeds',53.7997,-1.5492],
+    ['Newcastle',55.0077,-1.6578],
+    ['Birstall',52.6736,-1.12],
+    ['Glasgow',55.8609,-4.2514],
+    ['Liverpool',53.4,-2.9833],
+    ['Portsmouth',50.8058,-1.0872],
+    ['Southampton',50.9,-1.4],
+    ['Nottingham',52.95,-1.15],
+    ['Bristol',51.45,-2.5833],
+    ['Sheffield',53.3833,-1.4667],
+    ['Kingston upon Hull',53.7444,-0.3325],
+    ['Leicester',52.6333,-1.1333],
+    ['Edinburgh',55.953,-3.189],
+    ['Caerdydd',51.4833,-3.1833],
+    ['Stoke-on-Trent',53,-2.1833],
+    ['Coventry',52.4081,-1.5106],
+    ['Reading',51.4542,-0.9731],
+    ['Belfast',54.5964,-5.93],
+    ['Derby',52.9167,-1.4667],
+    ['Plymouth',50.3714,-4.1422],
+    ['Wolverhampton',52.5833,-2.1333],
+    ['Abertawe',51.6167,-3.95],
+    ['Milton Keynes',52.04,-0.76],
+    ['Aberdeen',57.15,-2.11],
+    ['Norwich',52.63,1.297],
+    ['Luton',51.8783,-0.4147],
+    ['Islington',51.544,-0.1027],
+    ['Swindon',51.56,-1.78],
+    ['Croydon',51.3727,-0.1099],
+    ['Basildon',51.5761,0.4886],
+    ['Bournemouth',50.72,-1.88],
+    ['Worthing',50.8147,-0.3714],
+    ['Ipswich',52.0594,1.1556],
+    ['Middlesbrough',54.5767,-1.2355],
+    ['Sunderland',54.9061,-1.3811],
+    ['Ilford',51.5588,0.0855],
+    ['Warrington',53.3917,-2.5972],
+    ['Slough',51.51,-0.59],
+    ['Huddersfield',53.645,-1.7798],
+    ['Oxford',51.7519,-1.2578],
+    ['York',53.9583,-1.0803],
+    ['Poole',50.7167,-1.9833],
+    ['Harrow',51.5836,-0.3464],
+    ['Dundee',56.462,-2.9707],
+    ['Saint Albans',51.755,-0.336],
+    ['Telford',52.6766,-2.4469],
+    ['Blackpool',53.8142,-3.0503],
+    ['Brighton',50.8429,-0.1313],
+    ['Sale',53.424,-2.322],
+    ['Enfield',51.6522,-0.0808],
+    ['Tottenham',51.588,-0.072],
+    ['Bolton',53.578,-2.429],
+    ['Newport',51.5833,-3],
+    ['High Wycombe',51.6287,-0.7482],
+    ['Exeter',50.7167,-3.5333],
+    ['Solihull',52.413,-1.778],
+    ['Romford',51.5768,0.1801],
+    ['Preston',53.759,-2.699],
+    ['Gateshead',54.95,-1.6],
+    ['Blackburn',53.748,-2.482],
+    ['Cheltenham',51.9,-2.0667],
+    ['Basingstoke',51.2667,-1.0876],
+    ['Maidstone',51.272,0.529],
+    ['Colchester',51.8917,0.903],
+    ['Chelmsford',51.7361,0.4798],
+    ['Wythenshawe',53.392,-2.264],
+    ['Doncaster',53.515,-1.133],
+    ['Rotherham',53.43,-1.357],
+    ['Walthamstow',51.59,0],
+    ['Rochdale',53.6136,-2.161],
+    ['Bedford',52.135,-0.47],
+    ['Crawley',51.1092,-0.1872],
+    ['Mansfield',53.15,-1.2],
+    ['Dagenham',51.5397,0.1422],
+    ['Stockport',53.4083,-2.1494],
+    ['Darlington',54.527,-1.5526],
+    ['Fyfield',51.739,0.2722],
+    ['Gillingham',51.385,0.55],
+    ['Salford',53.483,-2.2931],
+    ['Eastbourne',50.77,0.28],
+    ['Wigan',53.5448,-2.6318],
+    ['Hounslow',51.4668,-0.375],
+    ['Wembley',51.5528,-0.2979],
+    ['Saint Helens',53.4541,-2.7461],
+    ['Worcester',52.192,-2.22],
+    ['Wakefield',53.68,-1.49],
+    ['Lincoln',53.2344,-0.5386],
+    ['Hemel Hempstead',51.7526,-0.4692],
+    ['Watford',51.655,-0.3957],
+    ['Oldham',53.5444,-2.1169],
+    ['Sutton Coldfield',52.563,-1.822],
+    ['Kettering',52.3931,-0.7229],
+    ['Hastings',50.85,0.57],
+    ['Hartlepool',54.69,-1.21],
+    ['Hove',50.8352,-0.1758],
+    ['Barnsley',53.5537,-1.4791],
+    ['Southport',53.6475,-3.0053],
+    ['Bath',51.38,-2.36],
+    ['Birkenhead',53.393,-3.014],
+    ['Grimsby',53.5595,-0.068],
+    ['Halifax',53.725,-1.863],
+    ['Bromley',51.407,0.021],
+    ['Fulham',51.4828,-0.195],
+    ['Nuneaton',52.523,-1.468],
+    ['Ealing',51.5175,-0.2988],
+    ['Stockton-on-Tees',54.57,-1.32],
+    ['Woolwich',51.488,0.063],
+    ['Bracknell',51.416,-0.749],
+    ['Derry',55.0004,-7.3333],
+    ['Hayes',51.5127,-0.4211],
+    ['Edmonton',51.6154,-0.0708],
+    ['Scunthorpe',53.5809,-0.6502],
+    ['Redditch',52.3069,-1.9492],
+    ['Chester',53.19,-2.89],
+    ['Dudley',52.508,-2.089],
+    ['Bury',53.593,-2.298],
+    ['Brixton',51.463,-0.106],
+    ['West Bromwich',52.519,-1.995],
+    ['Paisley',55.8466,-4.4236],
+    ['Guildford',51.2365,-0.5703],
+    ['Chatham',51.37,0.52],
+    ['Edgware',51.6185,-0.2729],
+    ['East Ham',51.5323,0.0554],
+    ['Weston-super-Mare',51.346,-2.977],
+    ['East Kilbride',55.7645,-4.1771],
+    ['South Shields',54.995,-1.43],
+    ['Carlisle',54.891,-2.944],
+    ['Newcastle under Lyme',53.0109,-2.2278],
+    ['Harrogate',53.9919,-1.5378],
+    ['Ashford',51.1465,0.8676],
+    ['Gravesend',51.4415,0.3685],
+    ['Burnley',53.789,-2.248],
+    ['Burton upon Trent',52.8019,-1.6367],
+    ['Crewe',53.099,-2.44],
+    ['Shrewsbury',52.708,-2.754],
+    ['Gosport',50.7948,-1.1243],
+    ['Lisburn',54.5167,-6.0333],
+    ['Lowestoft',52.48,1.75],
+    ['Rugby',52.37,-1.26],
+    ['Uxbridge',51.5404,-0.4778],
+    ['Inverness',57.4781,-4.2233],
+    ['Keighley',53.867,-1.911],
+    ['Southall',51.5121,-0.3779],
+    ['Maidenhead',51.5217,-0.7177],
+    ['Stafford',52.8066,-2.1171],
+    ['Wimbledon',51.422,-0.208],
+    ['Walsall',52.58,-1.98],
+    ['Tynemouth',55.017,-1.423],
+    ['Washington',54.9,-1.52],
+    ['Loughborough',52.7705,-1.2046],
+    ['Chingford',51.631,0.016],
+    ['Thornton Heath',51.4002,-0.1086],
+    ['Finchley',51.599,-0.187],
+    ['Wrecsam',53.046,-2.993],
+    ['Torquay',50.47,-3.53],
+    ['Farnborough',51.29,-0.75],
+    ['Kensington',51.5,-0.19],
+    ['Waterlooville',50.88,-1.03],
+    ['Hornchurch',51.5565,0.2128],
+    ['Mitcham',51.4009,-0.1517],
+    ['Feltham',51.4496,-0.4089],
+    ['Stourbridge',52.4575,-2.1479],
+    ['Rochester',51.375,0.5],
+    ['Dewsbury',53.691,-1.633],
+    ['Woking',51.3162,-0.561],
+    ['Rhondda',51.6159,-3.4175],
+    ['Sittingbourne',51.34,0.74],
+    ['Acton',51.5135,-0.2707],
+    ['Twickenham',51.449,-0.337],
+    ['Runcorn',53.341,-2.729],
+    ['Scarborough',54.2773,-0.4017],
+    ['Wandsworth',51.455,-0.192],
+    ['Widnes',53.363,-2.728],
+    ['Margate',51.385,1.3838],
+    ['Bangor',54.66,-5.67],
+    ['Morecambe',54.073,-2.87],
+    ['Taunton',51.019,-3.1],
+    ['Wallasey',53.4158,-3.0233],
+    ['Royal Tunbridge Wells',51.132,0.263]
+    ];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 5.7,
+      center: new google.maps.LatLng(54.3781, -4.4360),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map,
+        icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+</body>
+
+<table class="table table-hover ">
+  <thead>
+    <tr class="table-bordered">
+      <th>City</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @places.each do |place| %>
+      <tr>
+        <td><%= place.name %></td>
+        <td><%= link_to 'Show', place %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
