@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '2.7.2'
 
 gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
@@ -27,7 +27,7 @@ gem 'mail_form', '~> 1.8.1'
 gem 'dotenv', '~> 2.7.5'
 
 gem 'bootstrap', '~> 5.0.0.beta2'
-gem 'jquery-rails'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -74,7 +74,7 @@ group :test do
   gem 'chromedriver-helper'
 end
 gem 'haml-rails'
-gem 'bootstrap-sass', '~> 3.3.6'
+#gem 'bootstrap-sass', '~> 3.3.6'
 gem 'modernizr-rails'
 gem 'devise'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
