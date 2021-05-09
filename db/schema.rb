@@ -12,14 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_04_28_131349) do
 
-  create_table "places", force: :cascade do |t|
-    t.string "name"
-    t.decimal "latitude"
-    t.decimal "longitude"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

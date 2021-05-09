@@ -18,6 +18,7 @@
 @import "bootstrap";
 
 body {
+  padding-top: 70px;
   margin:0;
   background-color: #E5C2EB;
 }
@@ -54,7 +55,7 @@ li a:hover:not(.active) {
 }
 
 nav{
-  padding: 40px;
+  padding: 60px;
   position: absolute;
   top: 50px;
 }
