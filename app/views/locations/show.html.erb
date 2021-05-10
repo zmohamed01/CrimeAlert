@@ -8,7 +8,7 @@
         <h5 class="card-title"><%= @location.typec %></h5>
         <h6 class="card-text"><%= @location.address %></h6><br/>
         <p class="card-text"><%= @location.description%></p>
-        <p class="card-text"><small class="text-muted"><%= @location.datetime %></small>    <%= @location.city %></p>
+        <p class="card-text"><small class="text-muted"><%= time_ago_in_words(@location.datetime) %></small>    <%= @location.city %></p>
         <%= link_to 'Edit', edit_location_path(@location), class:"btn btn-outline-primary" %>
         <%= link_to 'Delete', location_path(@location), class:"btn btn-outline-danger", method: :delete, data:{confirm: "Are you sure?"} %>
         <%= link_to 'Back to all submissions', locations_path, type: "button", class:"btn btn-outline-secondary" %>
@@ -18,11 +18,35 @@
       <h5 class="card-title"><%= @location.typec %></h5>
       <h6 class="card-text"><%= @location.address %></h6><br/>
       <p class="card-text"><%= @location.description%></p>
-      <p class="card-text"><small class="text-muted"><%= @location.datetime %></small>    <%= @location.city %></p>
+      <p class="card-text"><small class="text-muted"><%= time_ago_in_words(@location.datetime) %></small>    <%= @location.city %></p>
       <%= link_to 'Edit', edit_location_path(@location), class:"btn btn-outline-primary" %>
       <%= link_to 'Delete', location_path(@location), class:"btn btn-outline-danger", method: :delete, data:{confirm: "Are you sure?"} %>
       <%= link_to 'Back to all submissions', locations_path, type: "button", class:"btn btn-outline-secondary" %>
     </div>
   </div>
+  
     <% end %>
+    <h3>Comments</h3>
+    <% @location.comments.each do |comment|%>
+      <div class="well">
+        <p><strong><%= comment.username %></strong>: <%= comment.body %></p>
+        <small><%= time_ago_in_words(comment.created_at) %> ago </small>
+      </div>
+    <% end %>
+    <hr>
+
+    <h4>Add Comment</h4>
+    <%= form_for([@location, @location.comments.build]) do |f| %>
+      <p>
+        <%= f.label :username%><br>
+        <%= f.text_field(:username, {:class => 'form-control', required: true}) %>
+      </p>
+      <p>
+        <%= f.label :body%>
+        <%= f.text_field(:body, {:class => 'form-control', required: true}) %>
+      </p>
+      <p>
+        <%= f.submit({:class => 'btn btn-success'})%>
+      </p>
+      <% end %>
     </div>

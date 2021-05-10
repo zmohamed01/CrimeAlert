@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :locations
+  resources :locations do
+    resources :comments
+  end
   get 'homepage/index'
   resources :places
   root 'homepage#index'

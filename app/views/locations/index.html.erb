@@ -18,7 +18,7 @@
         <h5 class="card-title"><%= location.typec %></h5>
         <h6 class="card-text"><%= location.address %></h6><br/>
         <p class="card-text"><%= location.description%></p>
-        <p class="card-text"><small class="text-muted"><%= location.datetime %></small>    <%= location.city %></p>
+        <p class="card-text"><small class="text-muted"><%= time_ago_in_words(location.datetime) %></small>    <%= location.city %></p>
         <%= link_to 'View', location_path(location), class:"btn btn-outline-info" %>
         <%= link_to 'Edit', edit_location_path(location), class:"btn btn-outline-primary" %>
        <%= link_to 'Delete', location_path(location), class:"btn btn-outline-danger", method: :delete, data:{confirm: "Are you sure?"} %>
@@ -28,7 +28,7 @@
         <h5 class="card-title"><%= location.typec %></h5>
         <h6 class="card-text"><%= location.address %></h6><br/>
         <p class="card-text"><%= location.description%></p>
-        <p class="card-text"><small class="text-muted"><%= location.datetime %></small>    <%= location.city %></p>
+        <p class="card-text"><small class="text-muted"><%= time_ago_in_words(location.datetime) %></small>    <%= location.city %></p>
         <%= link_to 'View', location_path(location), class:"btn btn-outline-info" %>
         <%= link_to 'Edit', edit_location_path(location), class:"btn btn-outline-primary" %>
         <%= link_to 'Delete', location_path(location), class:"btn btn-outline-danger", method: :delete, data:{confirm: "Are you sure?"} %>

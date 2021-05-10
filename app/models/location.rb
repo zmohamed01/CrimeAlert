@@ -1,6 +1,7 @@
 class Location < ApplicationRecord
 	serialize :image, JSON
 	
+	has_many :comments
 	has_one_attached :image
 	
 	validates :datetime, presence: true
