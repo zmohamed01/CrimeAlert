@@ -1,0 +1,27 @@
+%ul
+  %li
+    %a{:href => "/"} Home
+  %li
+    %a{:href => "/places"} Crime Map
+  %li
+    %a{:href => "/police/index"} Police Stations
+  %li
+    %a{:href => "/locations/new"} Submit a Crime
+  %li
+    %a{:href => "/reports"} Help
+
+  - if user_signed_in?
+    %li{:style => "float:right"}
+      %a{:href => edit_user_registration_path} Edit Profile
+    %li{:style => "float:right"}
+      = link_to "Sign Out", destroy_user_session_path, method: :delete, class:"nav-link"
+  - else
+    %li{:style => "float:right"}
+      %a{:href => new_user_registration_path} Sign Up
+    %li{:style => "float:right"}
+      %a{:href => new_user_session_path} Sign In
+
+
+
+- flash.each do |key, value|
+  = content_tag :div, content_tag(:p, value), id: "#{key}" unless value.blank?

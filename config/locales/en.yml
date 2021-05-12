@@ -30,4 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  app_title: "CrimeGuard UK"
+  app_descripion: "This website provides data on crime acticity in the UK"
+
+  home:
+      home:
+        title: "CrimeGuard UK"
+        welcome: "Welcome to CrimeGuard UK a place to check recent crime activity in your area!"

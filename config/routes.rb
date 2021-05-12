@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root 'home#home'
   resources :locations do
     resources :comments
   end
   get 'homepage/index'
   resources :places
-  root 'homepage#index'
+  get 'homepage/index'
   resources :reports
   get 'police/index'
   resources :contacts, only: [:new, :create]
