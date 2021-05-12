@@ -16,7 +16,9 @@
     = javascript_include_tag 'https://unpkg.com/axios/dist/axios.min.js'
     = javascript_include_tag 'modernizr'
     = csrf_meta_tags
-
+    = csp_meta_tag
+    = include_gon
+    = yield(:head_tags)
   %body
   
   = render 'shared/header'
