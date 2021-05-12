@@ -129,13 +129,35 @@
             componentRestrictions: countryRestrict,
           }
         );
+
+        getLocation();
+
         places = new google.maps.places.PlacesService(map);
         autocomplete.addListener("place_changed", onPlaceChanged);
         // Add a DOM event listener to react when the user selects a country.
         document
-          .getElementById("country")
-          .addEventListener("change", setAutocompleteCountry);
-      }
+        .getElementById("country")
+        .addEventListener("change", setAutocompleteCountry);
+        }
+
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } else {
+            
+          }
+        }
+
+        function showPosition(position) {
+          var lat = position.coords.latitude;
+          var lng = position.coords.longitude;
+          console.log(lat  + " " + lng);
+          new google.maps.Marker({
+          position: { lat: lat, lng: lng },
+          map,
+          title: "Your Location",
+          });
+        }
 
       // When the user selects a city, get the place details for the city and
       // zoom the map in on the city.
