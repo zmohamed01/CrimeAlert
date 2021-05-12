@@ -4,10 +4,12 @@ class LocationsController < ApplicationController
   # GET /locations or /locations.json
   def index
     @locations = Location.all
+    # gon.places = Location.all
   end
 
   # GET /locations/1 or /locations/1.json
   def show
+    # gon.places = Location.all
   end
 
   # GET /locations/new
