@@ -23,7 +23,7 @@ function initMap(lat, lng) {
       position: mapsMouseEvent.latLng,
     });
     infoWindow.setContent(
-      JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+      //JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
     );
     infoWindow.open(map);
 

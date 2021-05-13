@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1>News</h1>
+    <h4>The latest crime news!</h4>
+  </div>
+<h5>Click on a article to view it</h5>
+  <br>
+  <% @news.length.times do |x| %>
+  <div class="border">
+    <h2><%= @news[x].name %></h2>
+    <div class="d-flex flex-row overflow-hidden py-2" style="height: 36%" onclick="location.href='<%= @news[x].url %>'">
+        <h4 style="text-align: justify; font-weight: bold; font-size: 1.3em"></h4>
+        <%= @news[x].title %>
+        <%= @news[x].description %>
+        <img class="img-fluid" src="<%= @news[x].urlToImage %>"
+        width="500"
+        height="800"
+        style="box-sizing: border-box">
+    </div>
+    <% end %>
+    </div>
+</div>
