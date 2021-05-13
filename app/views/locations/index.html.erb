@@ -1,15 +1,16 @@
-<div class="main">
-<h2><b>Report Submissions</b></h2><br/>
+
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1>Report Submissions</h1>
 
 
-<div class="input-group">
 <%= form_tag(locations_path, method: :get) do %>
     <div class="form-outline input-group">
     <%= text_field_tag(:search, params[:search], placeholder: "Search by city name", class: "form-control") %>
   <%= submit_tag ("Search"), class: "btn btn-outline-success my-2 my-sm-0" %>
   <% end %>
 </div></div>
-</br>
+<br>
 
 <% @locations.each do|location| %>
   <div class="card mb-3">
@@ -38,4 +39,5 @@
 <% end %>
 <%= link_to 'New Form', new_location_path, class:"btn btn-secondary" %>
 
+</div>
 </div>
