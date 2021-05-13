@@ -1,0 +1,27 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+h1 {
+  text-transform: uppercase; //makes heading uppercase
+  font-family: Arial, Helvetica, sans-serif; //sets heading font
+//  text-align: center;// centers heading on page
+  font-size: 500px; //sets heading size
+//  padding: 10px;
+//  padding-top: 150px;
+  color: pink //sets heading colour to black
+
+}
+
+p{
+  position: absolute;
+  font-size: 20px;
+  top: 30%;
+  left: 35%;
+}
+img{
+  position: absolute;
+  width: 17%;
+  height: auto;
+  left: 41%;
+  top: 7%;
+}

@@ -1,0 +1,26 @@
+!!!
+
+%html
+  %head
+    %meta{'charset' => 'utf-8'}
+    %meta{'http-equiv' => 'x-ua-compatible', 'content' => 'ie=edge'}
+
+    %title= t('app_title')
+
+    %meta{'name' => 'description', 'content' => t('app_description')}
+    %meta{'name' => 'viewport', 'content' => 'width=device-width, initial-scale=1'}
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB1FoiNJNZ68f9AtSOmByGJuZ_b8pHLmoQ&libraries=places'
+    = javascript_include_tag 'https://unpkg.com/axios/dist/axios.min.js'
+    = javascript_include_tag 'modernizr'
+    = csrf_meta_tags
+    = csp_meta_tag
+    = include_gon
+    = yield(:head_tags)
+  %body
+  
+  = render 'shared/header'
+  = yield
+  = render 'shared/footer'
