@@ -3,7 +3,6 @@ class LocationsController < ApplicationController
 
   # GET /locations or /locations.json
   def index
-    @locations = Location.search(params[:search])
     @locations = Location.where(['city LIKE ?', "%#{params[:search]}%"])
   end
 

@@ -1,31 +1,18 @@
-<!DOCTYPE html>
-<html>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-  <head>
-    <title>Place Autocomplete</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <div class="container class="center"">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-5">
-                <h1> All Cities</h1>
-                <h5> Search for a city:</h5>
+<div class="container center">
+  <div class="jumbotron text-center">
+    <h1>All Cities</h1>
+    <h4>Search for a city</h4>
+    <div class="jumbotron text-center">
+      <%= form_tag(places_path, method: :get) do %>
+          <div class="form-outline input-group center">
+              <%= text_field_tag(:search, params[:search], placeholder: "Search by city name", class: "form-control") %>
+              <%= submit_tag ("Search"), class: "btn btn-outline-success my-2 my-sm-0" %>
+              <% end %>
             </div>
+          </div>
         </div>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <form action="" class="search-form">
-                    <div class="form-group has-feedback">
-                		<label for="search" class="sr-only">Search for a city...</label>
-                		<input type="text" class="form-control" name="search" id="search" placeholder="search">
-                  		<span class="glyphicon glyphicon-search form-control-feedback"></span>
-                	</div>
-                </form>
-            </div>
-        </div>
-    </div>
-
+      </div>
+    <br>
   <script>
       function initMap() {
         const myLatlng = { lat: 54.5781, lng: -4.4360 };
