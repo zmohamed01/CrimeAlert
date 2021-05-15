@@ -3,7 +3,7 @@ class LocationsController < ApplicationController
 
   # GET /locations or /locations.json
   def index
-    # @locations = Location.all
+    @b = Location.all
     @locations = Location.search(params[:search])
   end
 
