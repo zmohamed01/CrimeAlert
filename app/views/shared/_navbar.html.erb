@@ -6,24 +6,46 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" <%= link_to 'Cities', places_path, class: 'navbar-brand' %></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" <%= link_to 'Submit a Crime', new_location_path, class: 'navbar-brand' %></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" <%= link_to 'Reported Crimes', locations_path, class: 'navbar-brand' %></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" <%= link_to 'Police Stations', police_index_path, class: 'navbar-brand' %></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" <%= link_to 'Crime News', news_index_path, class: 'navbar-brand' %></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" <%= link_to 'Contact Us', new_contact_path, class: 'navbar-brand' %></a>
-        </li>
+        
+
+        <% if model_signed_in? %>
+          <li class="nav-item">
+            <a class="nav-link" <%= link_to 'Cities', places_path, class: 'navbar-brand' %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" <%= link_to 'Submit a Crime', new_location_path, class: 'navbar-brand' %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" <%= link_to 'Reported Crimes', locations_path, class: 'navbar-brand' %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" <%= link_to 'Police Stations', police_index_path, class: 'navbar-brand' %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" <%= link_to 'Crime News', news_index_path, class: 'navbar-brand' %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" <%= link_to 'Contact Us', new_contact_path, class: 'navbar-brand' %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" <%= link_to 'Edit Profile', edit_model_registration_path, class: 'navbar-brand' %>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" <%= link_to 'Sign Out', destroy_model_session_path, method: :delete, class: 'navbar_brand' %> </a>
+          </li>
+          
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link" <%= link_to 'Sign Up', new_model_registration_path, class: 'navbar-brand' %></a>
+          </li>
+          <li class="nav-item"> 
+            <a class="nav-link" <%= link_to 'Sign In', new_model_session_path, class: 'navbar-brand' %> </a>
+          </li>
+        <% end %>
+        
+        
+
 
 
 
