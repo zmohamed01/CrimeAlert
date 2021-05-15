@@ -9,7 +9,9 @@ gem 'rails-controller-testing'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'news-api'
-gem 'gon', '~> 6.4'
+gem 'devise-i18n'
+gem 'devise-bootstrap-views', '~> 1.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
 # Use sqlite3 as the database for Active Record
@@ -81,4 +83,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'mocha', group: :test
 gem "ransack", "~> 2.4"
-
