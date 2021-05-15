@@ -4,6 +4,7 @@ class PlacesController < ApplicationController
   # GET /places or /places.json
   def index
     @places = Place.where(['name LIKE ?', "%#{params[:search]}%"])
+    @crimes = Location.all
   end
 
   # GET /places/1 or /places/1.json
