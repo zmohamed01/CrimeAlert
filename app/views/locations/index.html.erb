@@ -23,7 +23,9 @@
         <p class="card-text"><small class="text-muted"><%= time_ago_in_words(location.datetime) %></small>    <%= location.city %></p>
         <%= link_to 'View', location_path(location), class:"btn btn-outline-info" %>
         <%= link_to 'Edit', edit_location_path(location), class:"btn btn-outline-primary" %>
-       <%= link_to 'Delete', location_path(location), class:"btn btn-outline-danger", method: :delete, data:{confirm: "Are you sure?"} %>
+        <% if current_model && current_model.admin? %>
+          <%= link_to 'Delete', location_path(location), class:"btn btn-outline-danger", method: :delete, data:{confirm: "Are you sure?"} %>
+        <% end %>
       </div>
     <% else %>
       <div class="card-body">
@@ -33,7 +35,9 @@
         <p class="card-text"><small class="text-muted"><%= time_ago_in_words(location.datetime) %></small>    <%= location.city %></p>
         <%= link_to 'View', location_path(location), class:"btn btn-outline-info" %>
         <%= link_to 'Edit', edit_location_path(location), class:"btn btn-outline-primary" %>
+        <% if current_model && current_model.admin? %>
         <%= link_to 'Delete', location_path(location), class:"btn btn-outline-danger", method: :delete, data:{confirm: "Are you sure?"} %>
+        <% end %>
     <% end %>
     </div>
   </div>

@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: %i[ show edit update destroy ]
-  before_action :authenticate_model!
+  before_action :authenticate_model!, only: %i[ edit new ]
 
   # GET /locations or /locations.json
   def index

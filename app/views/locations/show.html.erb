@@ -9,8 +9,10 @@
         <h6 class="card-text"><%= @location.address %></h6><br/>
         <p class="card-text"><%= @location.description%></p>
         <p class="card-text"><small class="text-muted"><%= time_ago_in_words(@location.datetime) %></small>    <%= @location.city %></p>
-        <%= link_to 'Edit', edit_location_path(@location), class:"btn btn-outline-primary" %>
-        <%= link_to 'Delete', location_path(@location), class:"btn btn-outline-danger", method: :delete, data:{confirm: "Are you sure?"} %>
+        <% if current_model && current_model.admin %>  
+          <%= link_to 'Edit', edit_location_path(@location), class:"btn btn-outline-primary" %>
+          <%= link_to 'Delete', location_path(@location), class:"btn btn-outline-danger", method: :delete, data:{confirm: "Are you sure?"} %>
+        <% end %>
         <%= link_to 'Back to all submissions', locations_path, type: "button", class:"btn btn-outline-secondary" %>
       </div>
     <% else %>
@@ -19,8 +21,10 @@
       <h6 class="card-text"><%= @location.address %></h6><br/>
       <p class="card-text"><%= @location.description%></p>
       <p class="card-text"><small class="text-muted"><%= time_ago_in_words(@location.datetime) %></small>    <%= @location.city %></p>
-      <%= link_to 'Edit', edit_location_path(@location), class:"btn btn-outline-primary" %>
-      <%= link_to 'Delete', location_path(@location), class:"btn btn-outline-danger", method: :delete, data:{confirm: "Are you sure?"} %>
+      <% if current_model && current_model.admin %>
+        <%= link_to 'Edit', edit_location_path(@location), class:"btn btn-outline-primary" %>
+        <%= link_to 'Delete', location_path(@location), class:"btn btn-outline-danger", method: :delete, data:{confirm: "Are you sure?"} %>
+      <% end %>
       <%= link_to 'Back to all submissions', locations_path, type: "button", class:"btn btn-outline-secondary" %>
     </div>
   </div>
