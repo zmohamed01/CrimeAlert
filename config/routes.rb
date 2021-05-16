@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :model
+  devise_for :models
   resources :locations do
     resources :comments
   end
