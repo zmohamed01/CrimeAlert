@@ -1,7 +1,5 @@
-<div class="container">
-  <div class="jumbotron text-center">
 <h1><%= t('.resend_confirmation_instructions') %></h1>
-</div>
+
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= bootstrap_devise_error_messages! %>
 
@@ -16,4 +14,3 @@
 <% end %>
 
 <%= render 'devise/shared/links' %>
-</div>
